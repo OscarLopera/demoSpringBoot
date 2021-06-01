@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
-@RequestMapping
+@RestController
+@RequestMapping("api")
 public class Controlador {
 
     @Autowired
     private InterPersonaService service;
 
-    @GetMapping(value="api/listar")
+    @GetMapping(value="/listar")
     public String listar(Model model){
         List<Persona>personas=service.listar();
         model.addAttribute("personas", personas);

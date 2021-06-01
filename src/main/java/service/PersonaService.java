@@ -6,6 +6,7 @@ import modelo.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,16 +23,14 @@ public class PersonaService  implements InterPersonaService {
 
     @Override
     public Optional<Persona> listarId(int id) {
-        return Optional.empty();
+        return data.findById(id);
     }
 
     @Override
-    public int save(Persona p) {
-        return 0;
+    public Persona save(Persona p) {
+        return data.save(p);
     }
 
     @Override
-    public void delete(int id) {
-
-    }
+    public void delete(int id) { data.deleteById(id); }
 }
